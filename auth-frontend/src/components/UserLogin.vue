@@ -45,14 +45,13 @@ export default {
           password: this.form.password
         });
 
-        // Simulate storing user info in localStorage after successful login
         const user = {
           username: this.form.username,
-          email: this.form.email  // You can set the email based on actual user info
+          email: this.form.email
         };
-        localStorage.setItem('user', JSON.stringify(user));  // Save user info
+        localStorage.setItem('user', JSON.stringify(user)); 
 
-        this.$router.push('/dashboard');  // Redirect to dashboard after login
+        this.$router.push('/dashboard');
         this.successMessage = response.data.message;
         this.errorMessage = '';
       } catch (error) {

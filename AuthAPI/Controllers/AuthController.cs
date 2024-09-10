@@ -3,6 +3,7 @@ using AuthAPI.Models;
 using AuthAPI.Repositories;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AuthAPI.Controllers
 {
@@ -10,17 +11,17 @@ namespace AuthAPI.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly InMemoryUserRepository _userRepository;
+        private readonly UserRepository _userRepository;
 
-        public AuthController()
+        public AuthController(UserRepository userRepository)
         {
-            _userRepository = new InMemoryUserRepository();
+            _userRepository = userRepository;
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromBody] User model)
+        public async Task<IActionResult> Register([FromBody] User model)
         {
-            if (_userRepository.UserExists(model.Username))
+            if (await _userRepository.UserExistsAsync(model.Username))
             {
                 return BadRequest("User already exists.");
             }
@@ -28,15 +29,17 @@ namespace AuthAPI.Controllers
             // Hash the password before storing it
             model.Password = HashPassword(model.Password);
 
-            _userRepository.AddUser(model);
+            await _userRepository.AddUserAsync(model);
 
             return Ok(new { message = "Registration successful." });
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] User model)
+        public async Task<IActionResult> Login([FromBody] User model)
         {
-            var user = _userRepository.GetUserByUsername(model.Username);
+			 Console.WriteLine($"Username: {model.Username}, Password: {model.Password}");
+            // Find user by username
+            var user = await _userRepository.GetUserByUsernameAsync(model.Username);
 
             if (user == null || !VerifyPassword(model.Password, user.Password))
             {

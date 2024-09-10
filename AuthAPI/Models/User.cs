@@ -4,6 +4,9 @@ namespace AuthAPI.Models
 {
     public class User
     {
+         [Key]
+        public int Id { get; set; }
+
         [Required]
         public required string Username { get; set; }
 
@@ -11,6 +14,6 @@ namespace AuthAPI.Models
         public required string Email { get; set; }
 
         [Required]
-        public required string Password { get; set; }  // Store the hashed password
+        public required string Password { get; set; }
     }
 }

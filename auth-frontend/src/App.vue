@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <nav v-if="!isLoggedIn">
-      <router-link to="/login">Login</router-link>
-      <router-link to="/register">Register</router-link>
+      <router-link v-if="$route.name === 'Register'" to="/login">Login</router-link>
+      <router-link v-if="$route.name === 'Login'" to="/register">Register</router-link>
     </nav>
     <router-view></router-view>
   </div>

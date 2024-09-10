@@ -14,6 +14,10 @@
         <label for="password">Password:</label>
         <input v-model="form.password" id="password" type="password" required />
       </div>
+      <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input v-model="form.confirmPassword" id="confirmPassword" type="password" required />
+      </div>
       <button type="submit">Register</button>
     </form>
     <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
@@ -30,7 +34,8 @@ export default {
       form: {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       },
       errorMessage: '',
       successMessage: ''
@@ -38,6 +43,11 @@ export default {
   },
   methods: {
     async registerUser() {
+      if (this.form.password !== this.form.confirmPassword) {
+        this.errorMessage = 'Passwords do not match!';
+        return;
+      }
+
       try {
         const response = await axios.post('http://localhost:5033/api/auth/register', {
           username: this.form.username,
@@ -54,3 +64,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
+</style>
