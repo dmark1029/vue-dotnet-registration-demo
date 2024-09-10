@@ -26,7 +26,7 @@ namespace AuthAPI.Controllers
             }
 
             // Hash the password before storing it
-            model.PasswordHash = HashPassword(model.PasswordHash);
+            model.Password = HashPassword(model.Password);
 
             _userRepository.AddUser(model);
 
@@ -38,7 +38,7 @@ namespace AuthAPI.Controllers
         {
             var user = _userRepository.GetUserByUsername(model.Username);
 
-            if (user == null || !VerifyPassword(model.PasswordHash, user.PasswordHash))
+            if (user == null || !VerifyPassword(model.Password, user.Password))
             {
                 return Unauthorized("Invalid username or password.");
             }

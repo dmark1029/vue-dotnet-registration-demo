@@ -10,7 +10,7 @@ namespace AuthAPI.Repositories
 
         public User GetUserByUsername(string username)
         {
-            return Users.SingleOrDefault(user => user.Username == username) ?? new User { Username = "Unknown", Email = "", PasswordHash = "" };
+            return Users.SingleOrDefault(user => user.Username == username) ?? new User { Username = "Unknown", Email = "", Password = "" };
         }
 
         public void AddUser(User user)

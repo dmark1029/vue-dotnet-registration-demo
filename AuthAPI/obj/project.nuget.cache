@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FhKpQMsitjg=",
+  "dgSpecHash": "p9AJ3AO5HHw=",
   "success": true,
-  "projectFilePath": "D:\\self-work\\AuthAPI\\AuthAPI.csproj",
+  "projectFilePath": "D:\\self-work\\vue-dotnet-registration-demo\\AuthAPI\\AuthAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\a\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\a\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

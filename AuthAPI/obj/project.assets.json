@@ -1822,11 +1822,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\self-work\\AuthAPI\\AuthAPI.csproj",
+      "projectUniqueName": "D:\\self-work\\vue-dotnet-registration-demo\\AuthAPI\\AuthAPI.csproj",
       "projectName": "AuthAPI",
-      "projectPath": "D:\\self-work\\AuthAPI\\AuthAPI.csproj",
+      "projectPath": "D:\\self-work\\vue-dotnet-registration-demo\\AuthAPI\\AuthAPI.csproj",
       "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
-      "outputPath": "D:\\self-work\\AuthAPI\\obj\\",
+      "outputPath": "D:\\self-work\\vue-dotnet-registration-demo\\AuthAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config"

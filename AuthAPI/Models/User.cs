@@ -11,6 +11,6 @@ namespace AuthAPI.Models
         public required string Email { get; set; }
 
         [Required]
-        public required string PasswordHash { get; set; }  // Store the hashed password
+        public required string Password { get; set; }  // Store the hashed password
     }
 }
