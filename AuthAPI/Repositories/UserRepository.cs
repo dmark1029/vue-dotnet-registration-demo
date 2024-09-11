@@ -15,20 +15,17 @@ namespace AuthAPI.Repositories
 
         public async Task<User?> GetUserByUsernameAsync(string username)
         {
-            // Ensure the async operation is awaited
             return await _context.Users.SingleOrDefaultAsync(user => user.Username == username);
         }
 
         public async Task AddUserAsync(User user)
         {
-            // Add the user and await the SaveChanges operation
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
         }
 
         public async Task<bool> UserExistsAsync(string username)
         {
-            // Ensure this async operation is awaited as well
             return await _context.Users.AnyAsync(u => u.Username == username);
         }
     }

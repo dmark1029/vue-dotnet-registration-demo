@@ -95,14 +95,14 @@ export default {
         this.errorMessage = '';
       } catch (error) {
         this.errorMessage = 'Login failed. Please check your credentials.';
-        this.openDialog();  // Show modal on login failure
+        this.openDialog();
       }
     },
     openDialog() {
-      this.dialog = true;  // Show the modal
+      this.dialog = true;
     },
     closeDialog() {
-      this.dialog = false;  // Close the modal
+      this.dialog = false;
     }
   }
 };

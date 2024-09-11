@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Register from '../components/UserRegister.vue';
 import Login from '../components/UserLogin.vue';
-import Dashboard from '../components/UserDashboard.vue'; // Import Dashboard component
+import Dashboard from '../components/UserDashboard.vue';
 
 const routes = [
   {
@@ -18,7 +18,7 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
-    meta: { requiresAuth: true }  // Protect this route
+    meta: { requiresAuth: true }
   },
   {
     path: '/',
@@ -31,13 +31,12 @@ const router = createRouter({
   routes
 });
 
-// Add a navigation guard to protect routes that require authentication
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = !!localStorage.getItem('user'); // Check if user is logged in
+  const isAuthenticated = !!localStorage.getItem('user');
   if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
-    next('/login'); // Redirect to login if not authenticated
+    next('/login');
   } else {
-    next(); // Continue to the route
+    next();
   }
 });
 

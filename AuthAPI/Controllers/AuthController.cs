@@ -26,7 +26,6 @@ namespace AuthAPI.Controllers
                 return BadRequest("User already exists.");
             }
 
-            // Hash the password before storing it
             model.Password = HashPassword(model.Password);
 
             await _userRepository.AddUserAsync(model);
@@ -37,8 +36,6 @@ namespace AuthAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] User model)
         {
-			 Console.WriteLine($"Username: {model.Username}, Password: {model.Password}");
-            // Find user by username
             var user = await _userRepository.GetUserByUsernameAsync(model.Username);
 
             if (user == null || !VerifyPassword(model.Password, user.Password))
@@ -49,7 +46,6 @@ namespace AuthAPI.Controllers
             return Ok(new { message = "Login successful." });
         }
 
-        // Utility method to hash the password
         private string HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())
@@ -59,7 +55,6 @@ namespace AuthAPI.Controllers
             }
         }
 
-        // Utility method to verify the hashed password
         private bool VerifyPassword(string enteredPassword, string storedPasswordHash)
         {
             return HashPassword(enteredPassword) == storedPasswordHash;
